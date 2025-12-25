@@ -1,0 +1,339 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="adminMst.master.cs" Inherits="Ecommerce.admin.adminMst" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <%--<link rel="stylesheet" href="../assets/css/style.css">--%>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        /* UNIVERSAL START */
+
+        body {
+            background-color: var(--black_3);
+            /*height: 100vh;*/
+            -webkit-user-select: none; /* Chrome, Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE/Edge */
+            user-select: none;
+        }
+
+        a {
+            color: var(--orange);
+        }
+
+            a:hover {
+                /*color: var(--black_1);*/
+            }
+
+        /*body::-webkit-scrollbar{
+             width: 0px;
+         }*/
+
+        :root {
+            --orange: orange;
+            --black_1: #1e1e1e;
+            --black_2: #252526;
+            --black_3: #2d2d30;
+            --black_4: #3e3e42;
+            --white: white;
+        }
+
+        .black_1 {
+            background-color: var(--black_1);
+        }
+
+        .black_2 {
+            background-color: var(--black_2);
+        }
+
+        .black_3 {
+            background-color: var(--black_3);
+        }
+
+        .black_4 {
+            background-color: var(--black_4);
+        }
+
+        .orange {
+            background-color: var(--orange);
+        }
+
+        .white {
+            color: var(--white);
+        }
+
+        .pointer{
+            cursor: pointer;
+        }
+
+        .z_index_98 {
+            z-index: 98 !important;
+            position: unset !important;
+        }
+
+        /* UNIVERSAL END */
+
+        /* HEADER START */
+
+        #header {
+            display: block;
+            z-index: 100;
+        }
+
+        /* HEADER END */
+
+        /* NAVIGATION START */
+
+        .side_nav {
+            width: 0px;
+            padding-top: 80px;
+            overflow-x: hidden;
+            transition: all 0.5s;
+            /*background-color: white;*/
+            z-index: 99;
+        }
+
+            .side_nav::-webkit-scrollbar {
+                width: 0px;
+            }
+
+        .side_nav_toggle {
+            width: 280px;
+        }
+
+        #menu_icon {
+            cursor: pointer;
+            /*padding: 10px 5px;
+         top: 80px;
+         right: -31px;
+         writing-mode: vertical-lr;
+         z-index: 100;*/
+            font-weight: 900;
+            margin: 0px;
+            padding: 0px 30px;
+            border-radius: 0%;
+            /*transform: rotate(90deg);*/
+        }
+
+        .custom-position-responsive {
+            position: fixed;
+        }
+
+        @media (min-width: 992px) {
+            .custom-position-responsive {
+                position: relative;
+            }
+
+            .side_nav {
+                width: 280px;
+            }
+
+            .side_nav_toggle {
+                width: 0px;
+            }
+        }
+
+        link_hover {
+            transition: all 0.5s ease;
+        }
+
+        .link_hover:focus {
+            font-weight: 900;
+            letter-spacing: 2px;
+            background-color: white !important;
+        }
+
+        .link_hover:hover {
+            font-weight: 900;
+            letter-spacing: 2px;
+            background-color: white !important;
+        }
+
+        /* NAVIGATION END */
+        /* other_page_container START*/
+
+        #other_page_container {
+            padding-top: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- HEADER START  -->
+
+        <div id="header" class="container-fluid border shadow-sm position-fixed top-0 bg-white">
+            <!-- <div class="container py-2"> -->
+            <div class="row">
+                <div class="col-12 d-flex justify-content-start">
+                    <a href="#" class="d-block py-2 text-decoration-none text-dark">
+                        <div class="mb-0 h3 fw-bold align-items-center">ADMIN PANEL</div>
+                        <%--<h3 class="mb-0 align-items-center">
+                                ADMIN PANEL
+                            </h3>--%>
+                    </a>
+                    <!-- MENU BTN ICON START -->
+                    <div id="menu_icon" class="small mb-0 border-0 border-primary positionfv-absolute d-flex align-items-center" onclick="side_bar_toggle()">
+                        <%--<a href="#">|||</a>--%>
+                        <%--<img src="#" alt="menu" />--%>
+                        <i class="fa fa-bars h4 mb-0" id="menu_icon_bars" onclick="change_icon()"></i>
+                    </div>
+                    <!-- MENU BTN ICON END -->
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+
+        <!-- HEADER END -->
+        <!-- ================================================ -->
+        <!-- NAVIGATION BAR START -->
+        <div class="d-flex">
+            <div class="black_1 custom-position-responsive" style="height: 100vh;">
+                <!-- LINKS ARE HERE  -->
+                <ul class="side_nav list-unstyled mb-0 text-nowrap">
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/dashboard.aspx" class="nav-link px-3 py-2">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/brand.aspx" class="nav-link px-3 py-2">Brand</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/category.aspx" class="nav-link px-3 py-2">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/product.aspx" class="nav-link px-3 py-2">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/usersDetail.aspx" class="nav-link px-3 py-2">User Deatils</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/order.aspx" class="nav-link px-3 py-2">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="#" class="nav-link px-3 py-2">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/admin/help.aspx" class="nav-link px-3 py-2">Help</a>
+                    </li>
+                    <!-- LOGOUT BTN -->
+                    <li class="nav-item">
+                        <asp:Button runat="server" ID="btnLogout" class="nav-link px-3 py-2 w-100 bg-transparent border-0" Style="text-align: start !important; color: var(--orange);" Text="Logout" />
+                    </li>
+                </ul>
+                <!-- LINKS ARE ABOVE -->
+            </div>
+
+            <!-- NAVIGATION BAR END -->
+            <!-- ============================================ -->
+            <!-- OTHER PAGE CONTENT START  -->
+
+            <div id="other_page_container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <!-- OTHER PAGE CONTENT END  -->
+
+        </div>
+    </form>
+
+    <!-- JS STARTS FROM HERE -->
+
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+
+    <!-- Jquery, Popper, Bootstrap -->
+
+    <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- Jquery Mobile Menu -->
+
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+
+    <!-- One Page, Animated-HeadLin -->
+
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/animated.headline.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+
+    <script src="../assets/js/jquery.scrollUp.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/jquery.sticky.js"></script>
+
+    <!-- contact js -->
+
+    <script src="../assets/js/contact.js"></script>
+    <script src="../assets/js/jquery.form.js"></script>
+    <script src="../assets/js/jquery.validate.min.js"></script>
+    <script src="../assets/js/mail-script.js"></script>
+    <script src="../assets/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <!-- My js start from here -->
+
+    <script>
+
+        $(document).ready(function () {
+
+            // SIDE NAVIGATION BAR TOGGLE LOGIC START
+
+            var icon = "menu";
+            $("#menu_icon").click(function () {
+                $(".side_nav").toggleClass("side_nav_toggle");
+
+                if (icon == "menu") {
+                    $("#menu_icon_bars").removeClass("fa-bars");
+                    $("#menu_icon_bars").addClass("fa-window-close");
+                    icon = "cross"
+                }
+                else {
+                    $("#menu_icon_bars").removeClass("fa-window-close");
+                    $("#menu_icon_bars").addClass("fa-bars");
+                    icon = "menu"
+                }
+
+            });
+
+            // SIDE NAVIGATION BAR TOGGLE LOGIC START
+
+        });
+
+    </script>
+</body>
+</html>

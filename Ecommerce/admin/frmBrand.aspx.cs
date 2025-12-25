@@ -14,18 +14,25 @@ namespace Ecommerce.admin
         string constr = System.Configuration.ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                string brand_id = Request.QueryString["id"].ToString();
-                if (!string.IsNullOrEmpty(brand_id))
+                if (!IsPostBack)
                 {
-                    initFrmFIll(brand_id);
-                    selectBtnPnl(true);
+                    string brand_id = Request.QueryString["id"];
+                    if (!string.IsNullOrEmpty(brand_id))
+                    {
+                        initFrmFIll(brand_id);
+                        selectBtnPnl(true);
+                    }
+                    else
+                    {
+                        lblMessage.Text = "lol";
+                    }
                 }
-                else
-                {
-                    lblMessage.Text = "lol";
-                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = ex.Message;
             }
         }
 
